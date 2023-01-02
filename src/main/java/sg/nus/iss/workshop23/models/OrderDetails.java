@@ -46,7 +46,7 @@ public class OrderDetails {
         this.costPrice = costPrice;
     }
 
-    public static OrderDetails create(SqlRowSet rs) {
+    public static OrderDetails create(SqlRowSet rs) { //prepare rowset
         OrderDetails od = new OrderDetails();
         od.setId(rs.getInt("order_id"));
         od.setOrderDate(new DateTime(
@@ -58,7 +58,7 @@ public class OrderDetails {
         return od;
     }
 
-    public JsonObject toJSON() {
+    public JsonObject toJSON() { // create a json object for display
         return Json.createObjectBuilder()
                 .add("order_id", getId())
                 .add("order_date", getOrderDate() != null ? getOrderDate().toString() : "")
